@@ -16,10 +16,11 @@
   "dependencies": {
     "godot-producer": "0.0.1",
     "elasticsearch": "~1.3.0",
-    "debug": "~0.7.4"
-  },
-  "devDependencies": {
+    "debug": "~0.7.4",
     "commander": "~2.1.0",
     "godot": "~0.7.5"
+  },
+  "devDependencies": {
+    
   }
 }
