@@ -25,7 +25,7 @@ var ElasticSearchProducer = producer(
     this.client.cluster.health(function( err, data ){
       debug( "cluster response, err: %s, data: %j", err, data );
       if( err ){
-        self.emit( "error", {
+        self.emit( "data", {
           service: service + "/healthcheck" ,
           state: "critical",
           description: err.toString()
