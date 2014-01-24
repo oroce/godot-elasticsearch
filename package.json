@@ -1,6 +1,6 @@
 {
   "name": "godot-elasticsearch",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "godot-elasticsearch ===================",
   "main": "index.js",
   "bin": "bin/godot-elasticsearch",
