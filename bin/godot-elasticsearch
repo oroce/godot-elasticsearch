@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+var ElasticSearchProducer = require( ".." );
+var godot = require( "godot" );
+var program = require( "commander" );
+var debug = require( "debug" )( "godot:elasticsearch:bin" );
+var url = require( "url" );
+var os = require( "os" );
+
+program
+  .version( require( "../package.json" ).version )
+  .option( "-H, --host [hostname or hostname:port]", "ElasticSearch host, default is localhost:9200", "localhost:9200" )
+  .option( "-g, --godot [url of godot]", "Godot server's host, default is udp://localhost:1337", "udp://localhost:1337" )
+  .parse( process.argv );
+
+var godotUrl = url.parse( program.godot );
+var hostName = os.hostname();
+var protocol = ( godotUrl.protocol||"udp" ).replace( /:$/, "" );
+
+var client = godot.createClient({
+  type: protocol,
+  producers: [
+    new ElasticSearchProducer({
+        host: hostName,
+        service: [ "elasticsearch", "health" ].join( "/" ),
+        ttl: 1000 * 15,
+        esHost: program.host
+      })
+  ]
+});
+
+debug( "connecting to %s on port %d using %s protocol",
+  godotUrl.hostname,
+  godotUrl.port,
+  protocol );
+
+client.connect( godotUrl.port, godotUrl.hostname, function(){
+  debug( "connected to godot server" );
+});

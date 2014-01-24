@@ -1,0 +1,25 @@
+{
+  "name": "godot-elasticsearch",
+  "version": "0.1.0",
+  "description": "godot-elasticsearch ===================",
+  "main": "index.js",
+  "bin": "bin/godot-elasticsearch",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/oroce/godot-elasticsearch.git"
+  },
+  "author": "oroce <robert@oroszi.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oroce/godot-elasticsearch/issues"
+  },
+  "dependencies": {
+    "godot-producer": "0.0.1",
+    "elasticsearch": "~1.3.0",
+    "debug": "~0.7.4"
+  },
+  "devDependencies": {
+    "commander": "~2.1.0",
+    "godot": "~0.7.5"
+  }
+}
